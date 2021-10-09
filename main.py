@@ -1,16 +1,51 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 # скрипт для парсинга файлов org.mode
+import re
+
+#regex1=r" вс"
 with open('dyary4.org') as file_in:
     text = file_in.read()
 
-text = text.replace(" вс", " воскресенье")
-text = text.replace(" сб", " суббота")
-text = text.replace(" пт", " пятница")
-text = text.replace(" чт", " четверг")
-text = text.replace(" ср", " среда")
-text = text.replace(" вт", " вторник")
-text = text.replace(" пн", " понедельник")
+#matches = re.finditer(regex, text)
+
+text = re.sub(
+    r'\b вс',
+    r' воскресенье',
+    text
+)
+
+text = re.sub(
+    r'\b сб',
+    r' сбуббота',
+    text
+)
+
+text = re.sub(
+    r'\b пт',
+    r' пятница',
+    text
+)
+text = re.sub(
+    r'\b чт',
+    r' четверг',
+    text
+)
+text = re.sub(
+    r'\b ср',
+    r' среда',
+    text
+)
+text = re.sub(
+    r'\b вт',
+    r' вторник',
+    text
+)
+text = re.sub(
+    r'\b пн',
+    r' понедельник',
+    text
+)
 
 with open('dyary4.txt', "w") as file_out:
     file_out.write(text)
